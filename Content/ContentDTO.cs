@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 
 namespace flow_view_database.Content;
 public class ContentDTO
@@ -17,4 +12,5 @@ public class ContentDTO
     public DateTime? ReleaseDate { get; set; }
     public DateTime? LastUpadted { get; set; }
     public ICollection<Rating.Rating>? Ratings { get; }
+    public IFormFileCollection? Files { get; set; }
 }
