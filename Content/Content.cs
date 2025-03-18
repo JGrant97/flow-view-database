@@ -18,5 +18,4 @@ public class Content
     public required ContentType Type { get; set; }
     public DateTime? ReleaseDate { get; set; }
     public DateTime? LastUpadted { get; set; }
-    public ICollection<Rating.Rating>? Ratings { get; }
 }

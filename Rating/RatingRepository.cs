@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,12 @@ public class RatingRepository : IRatingRepository
         await _context.SaveChangesAsync();
         return rating;
     }
+
+    public int GetLikes(Guid contentId) =>
+         _context.Rating.Where(x => x.ContentId == contentId && x.Like).Count();
+
+    public int GetDislikes(Guid contentId) =>
+        _context.Rating.Where(x => x.ContentId == contentId && !x.Like).Count();
 
     public async Task DeleteAsync(Guid id)
     {
@@ -58,4 +65,7 @@ public class RatingRepository : IRatingRepository
         await _context.SaveChangesAsync();
         return ratingInDb;
     }
+
+    public async Task<Rating?> GetByContentIdAndUserIdAsync(Guid contentId, Guid userId) =>
+        await _context.Rating.FirstOrDefaultAsync(x => x.ContentId == contentId && x.AspNetUserId == userId);    
 }

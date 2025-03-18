@@ -23,22 +23,8 @@ public static class RatingsMapper
        }).ToList();
 
     public static RatingDTO MapToDTO(this Rating rating) =>
-        new RatingDTO()
-        {
-            Id = rating.Id,
-            AspNetUserId = rating.AspNetUserId,
-            ContentId = rating.ContentId,
-            LastUpdated = rating.LastUpdated,
-            Like = rating.Like,
-        };
+        new RatingDTO(rating.Id, rating.AspNetUserId, rating.ContentId, rating.Like, rating.LastUpdated);
 
     public static List<RatingDTO> MapToDTO(this List<Rating> rating) =>
-       rating.Select(item => new RatingDTO()
-       {
-           Id = item.Id,
-           AspNetUserId = item.AspNetUserId,
-           ContentId = item.ContentId,
-           LastUpdated = item.LastUpdated,
-           Like = item.Like,
-       }).ToList();
+       rating.Select(item => new RatingDTO(item.Id, item.AspNetUserId, item.ContentId, item.Like, item.LastUpdated)).ToList();
 }
