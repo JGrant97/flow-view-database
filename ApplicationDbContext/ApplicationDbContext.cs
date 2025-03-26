@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Metrics;
+using System.Drawing;
 
 namespace flow_view_database.ApplicationDbContext;
 public class ApplicationDbContext : 
@@ -16,6 +18,16 @@ public class ApplicationDbContext :
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Rating.Rating>()
+            .HasIndex(c => new { c.UserId, c.ContentId })
+            .IsUnique(true);
+
+        modelBuilder.Entity<Rating.Rating>()
+            .HasOne(x => x.Content)
+            .WithMany()
+            .HasForeignKey(x => x.ContentId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         base.OnModelCreating(modelBuilder);
     }
 }

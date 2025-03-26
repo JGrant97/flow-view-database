@@ -8,12 +8,15 @@ public class Rating
     [Key]
     public Guid Id { get; set; }
     [Required]
-    public required Guid AspNetUserId { get; set; }
+    public required Guid UserId { get; set; }
+    [ForeignKey("UserId")]
+    public virtual ApplicationUser.ApplicationUser? User { get; set; }
     [Required]
     public bool Like { get; set; }
     [Required]
     public DateTime LastUpdated { get; set; }
     [Required]
-    [ForeignKey("Content")]
-    public Guid ContentId { get; set; }
+    public required Guid ContentId { get; set; }
+    [ForeignKey("ContentId")]
+    public virtual Content.Content? Content { get; set; }
 }

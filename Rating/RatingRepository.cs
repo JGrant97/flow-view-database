@@ -67,5 +67,5 @@ public class RatingRepository : IRatingRepository
     }
 
     public async Task<Rating?> GetByContentIdAndUserIdAsync(Guid contentId, Guid userId) =>
-        await _context.Rating.FirstOrDefaultAsync(x => x.ContentId == contentId && x.AspNetUserId == userId);    
+        await _context.Rating.FirstOrDefaultAsync(x => x.ContentId == contentId && x.UserId == userId);    
 }

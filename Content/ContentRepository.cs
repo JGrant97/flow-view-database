@@ -29,7 +29,9 @@ public class ContentRepository : IContentRepository
         if (contextInDb is null)
             throw new KeyNotFoundException("Content does not found.");
 
+        _context.Rating.RemoveRange(_context.Rating.Where(x => x.ContentId == id));
         _context.Content.Remove(contextInDb);
+
         await _context.SaveChangesAsync();
     }
 

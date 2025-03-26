@@ -9,6 +9,7 @@ public static class ContentMapper
 {
     public static ContentDTO MapToDTO(this Content content) =>
         new ContentDTO(content.Id,
+            content.UserId,
             content.Title,
             content.Description,
             content.Thumbnail,
@@ -21,6 +22,7 @@ public static class ContentMapper
     public static List<ContentDTO> MapToDTO(this List<Content> content) =>
         content.Select(item => new ContentDTO(
             item.Id, 
+            item.UserId,
             item.Title, 
             item.Description, 
             item.Thumbnail, 
@@ -34,6 +36,7 @@ public static class ContentMapper
         new Content()
         {
             Id = content.Id,
+            UserId = content.UserId,
             Description = content.Description,
             FilePath = content.FilePath,
             LastUpadted = content.LastUpadted,
@@ -47,6 +50,7 @@ public static class ContentMapper
         content.Select(item => new Content()
         {
             Id = item.Id,
+            UserId = item.UserId,
             Description = item.Description,
             FilePath = item.FilePath,
             LastUpadted = item.LastUpadted,
