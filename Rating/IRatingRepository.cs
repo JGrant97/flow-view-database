@@ -8,11 +8,11 @@ namespace flow_view_database.Rating;
 public interface IRatingRepository
 {
     IQueryable<Rating> Get();
-    Task<Rating> GetAsync(Guid id);
-    Task<Rating?> GetByContentIdAndUserIdAsync(Guid contentId, Guid userId);
-    Task<Rating> CreateAsync(Rating rating);
-    Task<Rating> UpdateAsync(Rating rating);
-    Task DeleteAsync(Guid id);
-    int GetLikes(Guid contentId);
-    int GetDislikes(Guid contentId);
+    Task<Rating> GetAsync(Guid id, CancellationToken cancellationToken);
+    Task<Rating?> GetByContentIdAndUserIdAsync(Guid contentId, Guid userId, CancellationToken cancellationToken);
+    Task<Rating> CreateAsync(Rating rating, CancellationToken cancellationToken);
+    Task<Rating> UpdateAsync(Rating rating, CancellationToken cancellationToken);
+    Task DeleteAsync(Guid id, CancellationToken cancellationToken);
+    Task<int> GetLikes(Guid contentId, CancellationToken cancellationToken);
+    Task<int> GetDislikes(Guid contentId, CancellationToken cancellationToken);
 }

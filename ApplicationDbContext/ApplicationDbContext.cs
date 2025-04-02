@@ -5,7 +5,7 @@ using System.Diagnostics.Metrics;
 using System.Drawing;
 
 namespace flow_view_database.ApplicationDbContext;
-public class ApplicationDbContext : 
+public class ApplicationDbContext :
     IdentityDbContext<ApplicationUser.ApplicationUser, ApplicationRole.ApplicationRole, Guid>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

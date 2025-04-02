@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 
 namespace flow_view_database.Content;
-public record ContentDTO(Guid Id, 
+public record ContentDTO(
+    Guid Id, 
     Guid UserId,
     string Title, 
     string Description, 
